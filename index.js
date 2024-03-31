@@ -21,6 +21,7 @@ let notes = [
   },
 ];
 
+app.use(express.static('dist'));
 app.use(cors());
 
 const requestLogger = (request, response, next) => {
