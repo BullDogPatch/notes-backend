@@ -55,7 +55,7 @@ app.post('/api/notes', (request, response) => {
   });
 });
 
-app.get('/api/notes/:id', (request, response, next) => {
+app.get('/api/notes/:id', (request, response) => {
   Note.findById(request.params.id)
     .then(note => {
       if (note) {
@@ -64,7 +64,10 @@ app.get('/api/notes/:id', (request, response, next) => {
         response.status(404).end();
       }
     })
-    .catch(error => next(error));
+    .catch(error => {
+      console.log(error);
+      response.status(500).end();
+    });
 });
 
 app.delete('/api/notes/:id', (request, response) => {
