@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+
+const Note = require('./models/notes');
 const app = express();
 
 let notes = [
@@ -44,7 +46,9 @@ app.get('/', (request, response) => {
 
 /* get all notes */
 app.get('/api/notes', (request, response) => {
-  response.json(notes);
+  Note.find({}).then(notes => {
+    response.json(notes);
+  });
 });
 
 /* get note with specific id */
