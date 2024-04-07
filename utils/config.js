@@ -8,6 +8,5 @@ const MONGODB_URI =
 
 module.exports = {
   MONGODB_URI,
-  TEST_MONGODB_URI,
   PORT,
 };
