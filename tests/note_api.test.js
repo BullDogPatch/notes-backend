@@ -34,7 +34,6 @@ test('all notes are returned', async () => {
 
 test('a specific note is within the returned notes', async () => {
   const response = await api.get('/api/notes');
-
   const contents = response.body.map(r => r.content);
 
   assert(contents.includes('Browser can execute only JavaScript'));
@@ -65,7 +64,6 @@ test('note without content is not added', async () => {
   };
 
   await api.post('/api/notes').send(newNote).expect(400);
-
   const notesAtEnd = await helper.notesInDb();
 
   assert.strictEqual(notesAtEnd.length, helper.initialNotes.length);
